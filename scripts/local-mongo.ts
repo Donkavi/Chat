@@ -17,7 +17,7 @@ console.log("Starting local MongoDB (the first run downloads the server binary)â
 const server = await MongoMemoryServer.create({
   instance: { port, ip: "127.0.0.1", dbPath, storageEngine: "wiredTiger" },
 });
-console.log(`\n  MongoDB ready at ${server.getUri()}lumos`);
+console.log(`\n  MongoDB ready at ${server.getUri()}langa`);
 console.log(`  Data directory: ${dbPath}`);
 console.log("  Press Ctrl+C to stop.\n");
 

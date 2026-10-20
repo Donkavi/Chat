@@ -1,5 +1,5 @@
 /**
- * Lumos server: one Node process serving the Next.js app and the Socket.IO
+ * Langa server: one Node process serving the Next.js app and the Socket.IO
  * realtime endpoint on the same port.
  *
  * Persistent WebSockets need a long-lived process, so deploy this to a host
@@ -41,7 +41,7 @@ async function main() {
   const realtime = createSocketServer(httpServer, { allowedOrigins });
 
   httpServer.listen(port, hostname, () => {
-    console.log(`> Lumos ready on ${appOrigin} (${dev ? "development" : "production"})`);
+    console.log(`> Langa ready on ${appOrigin} (${dev ? "development" : "production"})`);
   });
 
   let shuttingDown = false;

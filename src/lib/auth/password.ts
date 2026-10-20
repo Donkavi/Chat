@@ -22,7 +22,7 @@ let dummyHash: Promise<string> | null = null;
  * exist, so response timing doesn't reveal which emails are registered.
  */
 export async function verifyAgainstDummy(password: string): Promise<false> {
-  dummyHash ??= hashPassword("lumos-dummy-password-for-timing");
+  dummyHash ??= hashPassword("langa-dummy-password-for-timing");
   await verifyPassword(await dummyHash, password);
   return false;
 }

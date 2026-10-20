@@ -6,7 +6,7 @@ import nextEnv from "@next/env";
  */
 export function loadDevEnv() {
   nextEnv.loadEnvConfig(process.cwd(), true);
-  const uri = process.env.MONGODB_URI || "mongodb://127.0.0.1:27017/lumos";
+  const uri = process.env.MONGODB_URI || "mongodb://127.0.0.1:27017/langa";
   if (process.env.NODE_ENV === "production") {
     throw new Error("Refusing to run development scripts with NODE_ENV=production.");
   }

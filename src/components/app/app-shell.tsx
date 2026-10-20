@@ -95,7 +95,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
 
       {/* Desktop sidebar */}
       <aside className="fixed inset-y-0 left-0 z-30 hidden w-68 flex-col border-r border-border/70 bg-bg-elevated/70 px-4 py-6 backdrop-blur-xl lg:flex">
-        <Link href="/discover" className="px-3" aria-label="Lumos home">
+        <Link href="/discover" className="px-3" aria-label="Langa home">
           <Logo />
         </Link>
         <nav aria-label="Main" className="mt-10 flex flex-col gap-1">

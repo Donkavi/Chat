@@ -110,7 +110,7 @@ export function ProfileEditor({ welcome = false }: { welcome?: boolean }) {
             🎉
           </span>
           <div className="flex-1">
-            <p className="font-display text-xl font-semibold">Welcome to Lumos, {me.displayName.split(" ")[0]}!</p>
+            <p className="font-display text-xl font-semibold">Welcome to Langa, {me.displayName.split(" ")[0]}!</p>
             <p className="mt-1 text-sm text-white/85">Add a photo and a few interests — then head to Discover to see who&apos;s around.</p>
           </div>
           <Link href="/discover" className="inline-flex h-11 items-center justify-center gap-2 rounded-2xl bg-white px-5 text-sm font-semibold text-[#b8361a] transition hover:bg-white/90">

@@ -5,11 +5,11 @@ import { io, type Socket } from "socket.io-client";
 import type { ClientToServerEvents, ServerToClientEvents } from "@/shared/events";
 import { HEARTBEAT_INTERVAL_MS } from "@/shared/constants";
 
-export type LumosSocket = Socket<ServerToClientEvents, ClientToServerEvents>;
+export type LangaSocket = Socket<ServerToClientEvents, ClientToServerEvents>;
 export type ConnectionStatus = "connecting" | "connected" | "reconnecting";
 
 interface RealtimeContextValue {
-  socket: LumosSocket | null;
+  socket: LangaSocket | null;
   status: ConnectionStatus;
   /** Increments on every (re)connection — effects depend on it to resync missed data. */
   connectionEpoch: number;
@@ -40,13 +40,13 @@ export function useSocketEvent<E extends keyof ServerToClientEvents>(event: E, h
 }
 
 export function RealtimeProvider({ children }: { children: React.ReactNode }) {
-  const [socket, setSocket] = useState<LumosSocket | null>(null);
+  const [socket, setSocket] = useState<LangaSocket | null>(null);
   const [status, setStatus] = useState<ConnectionStatus>("connecting");
   const [connectionEpoch, setEpoch] = useState(0);
 
   useEffect(() => {
     // Same-origin connection; the HTTP-only session cookie authenticates it.
-    const s: LumosSocket = io({
+    const s: LangaSocket = io({
       path: "/socket.io",
       withCredentials: true,
       reconnectionDelay: 800,
@@ -71,10 +71,10 @@ export function RealtimeProvider({ children }: { children: React.ReactNode }) {
       setStatus("reconnecting");
       if (err.message === "UNAUTHENTICATED") {
         s.disconnect();
-        window.dispatchEvent(new CustomEvent("lumos:unauthenticated"));
+        window.dispatchEvent(new CustomEvent("langa:unauthenticated"));
       }
     });
-    s.on("session:revoked", () => window.dispatchEvent(new CustomEvent("lumos:unauthenticated")));
+    s.on("session:revoked", () => window.dispatchEvent(new CustomEvent("langa:unauthenticated")));
 
     // The socket is an external resource owned by this effect; exposing it via state is intended.
     // eslint-disable-next-line react-hooks/set-state-in-effect

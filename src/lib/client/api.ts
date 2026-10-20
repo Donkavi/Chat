@@ -36,7 +36,7 @@ async function request<T>(method: string, url: string, body?: unknown, init?: Re
   if (!res.ok) {
     const err = (parsed as ApiErrorBody | null)?.error;
     if (res.status === 401 && typeof window !== "undefined" && !url.startsWith("/api/auth/")) {
-      window.dispatchEvent(new CustomEvent("lumos:unauthenticated"));
+      window.dispatchEvent(new CustomEvent("langa:unauthenticated"));
     }
     throw new ApiError(res.status, err?.code ?? "HTTP_ERROR", err?.message ?? "Something went wrong. Please try again.", err?.fields);
   }

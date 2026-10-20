@@ -26,8 +26,8 @@ export function SessionProvider({ initialMe, children }: { initialMe: Me; childr
 
   useEffect(() => {
     const onUnauth = () => router.replace("/login?expired=1");
-    window.addEventListener("lumos:unauthenticated", onUnauth);
-    return () => window.removeEventListener("lumos:unauthenticated", onUnauth);
+    window.addEventListener("langa:unauthenticated", onUnauth);
+    return () => window.removeEventListener("langa:unauthenticated", onUnauth);
   }, [router]);
 
   const patchMe = useCallback((patch: Partial<Me>) => setMe((m) => ({ ...m, ...patch })), []);

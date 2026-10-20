@@ -5,9 +5,9 @@ import "./globals.css";
 import { ClientProviders } from "@/components/providers/client-providers";
 
 export const metadata: Metadata = {
-  title: { default: "Lumos: meet new people right around you", template: "%s · Lumos" },
+  title: { default: "Langa: meet new people right around you", template: "%s · Langa" },
   description: "Discover interesting people nearby, start a conversation, and make new connections. Made in Sri Lanka.",
-  applicationName: "Lumos",
+  applicationName: "Langa",
   icons: { icon: "/icon.svg" },
 };
 
@@ -24,7 +24,7 @@ export const viewport: Viewport = {
 };
 
 // Runs before paint so the chosen theme never flashes.
-const themeScript = `(function(){try{var t=localStorage.getItem('lumos-theme');var d=t==='dark'||((!t||t==='system')&&window.matchMedia('(prefers-color-scheme: dark)').matches);document.documentElement.classList.toggle('dark',d);}catch(e){}})();`;
+const themeScript = `(function(){try{var t=localStorage.getItem('langa-theme');var d=t==='dark'||((!t||t==='system')&&window.matchMedia('(prefers-color-scheme: dark)').matches);document.documentElement.classList.toggle('dark',d);}catch(e){}})();`;
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (

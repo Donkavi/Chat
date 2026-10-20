@@ -5,7 +5,7 @@ import { Session } from "@/server/models/Session";
 import { User, type UserDoc } from "@/server/models/User";
 import { generateToken, hashToken } from "./tokens";
 
-export const SESSION_COOKIE = "lumos_session";
+export const SESSION_COOKIE = "langa_session";
 const SESSION_TTL_MS = 30 * 24 * 60 * 60_000;
 /** Extend the session (one write) at most this often while it's in use. */
 const SESSION_TOUCH_MS = 24 * 60 * 60_000;

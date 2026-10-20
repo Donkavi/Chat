@@ -1,6 +1,6 @@
 import { NextResponse, type NextRequest } from "next/server";
 
-const SESSION_COOKIE = "lumos_session";
+const SESSION_COOKIE = "langa_session";
 const PROTECTED = ["/discover", "/chats", "/profile", "/settings"];
 
 /**

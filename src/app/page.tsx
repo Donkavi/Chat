@@ -49,7 +49,7 @@ export default async function LandingPage() {
   return (
     <div className="min-h-dvh bg-ambient bg-grain">
       <header className="mx-auto flex max-w-7xl items-center justify-between px-5 py-5 sm:px-8">
-        <Link href="/" aria-label="Lumos home">
+        <Link href="/" aria-label="Langa home">
           <Logo />
         </Link>
         <nav className="flex items-center gap-1 sm:gap-2" aria-label="Main">
@@ -62,7 +62,7 @@ export default async function LandingPage() {
           <ThemeIconToggle />
           {user ? (
             <Link href="/discover" className={buttonClasses("primary", "sm")}>
-              Open Lumos
+              Open Langa
             </Link>
           ) : (
             <>
@@ -162,7 +162,7 @@ export default async function LandingPage() {
                   <p className="font-display text-sm font-bold tracking-[0.18em] text-[#ffb19c] uppercase">Privacy by design</p>
                   <h2 className="mt-3 font-display text-4xl font-semibold tracking-tight text-balance sm:text-5xl">Your location stays yours.</h2>
                   <p className="mt-4 max-w-md text-[0.9375rem] leading-relaxed text-white/70">
-                    Lumos does the distance maths on our servers. Your coordinates are never sent to other people — not in the app, not in our API.
+                    Langa does the distance maths on our servers. Your coordinates are never sent to other people — not in the app, not in our API.
                   </p>
                 </div>
                 <ul className="grid gap-4 sm:grid-cols-2">

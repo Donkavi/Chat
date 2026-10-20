@@ -1,6 +1,6 @@
-# Lumos
+# Langa
 
-**Meet new people. Right around you.** Lumos is a location-based social discovery and chat web app, built first for Sri Lanka. You turn on location, choose a radius, see who's online nearby, open their profile and start a private real-time conversation.
+**Meet new people. Right around you.** Langa is a location-based social discovery and chat web app, built first for Sri Lanka. You turn on location, choose a radius, see who's online nearby, open their profile and start a private real-time conversation.
 
 **Discover → View profile → Say hello 👋 → Chat in real time.**
 
@@ -20,7 +20,7 @@ npm run dev                    # terminal 2: app + realtime server on http://loc
 npm run simulate               # terminal 3 (optional): brings seed users online; they reply to chats
 ```
 
-Sign in as **demo@lumos.lk / lumos-demo-123**. Allow location when Discover asks; the seed users are spread around Colombo, so 5–10 km works well from there. Every seed user also uses the password `lumos-demo-123` (e.g. `amaya.f`), so you can open a second browser profile and chat between two real accounts.
+Sign in as **demo@langa.lk / langa-demo-123**. Allow location when Discover asks; the seed users are spread around Colombo, so 5–10 km works well from there. Every seed user also uses the password `langa-demo-123` (e.g. `amaya.f`), so you can open a second browser profile and chat between two real accounts.
 
 > To use your own MongoDB (Atlas or local), set `MONGODB_URI` and skip `db:local`.
 
@@ -132,7 +132,7 @@ See [`.env.example`](.env.example). The main variables:
 
 ## Deployment
 
-Lumos needs **a long-running Node process**, because Socket.IO keeps WebSocket connections open:
+Langa needs **a long-running Node process**, because Socket.IO keeps WebSocket connections open:
 
 ```bash
 npm ci && npm run build

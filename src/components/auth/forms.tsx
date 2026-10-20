@@ -82,7 +82,7 @@ export function LoginForm() {
         title="Welcome back"
         subtitle={
           <>
-            New to Lumos?{" "}
+            New to Langa?{" "}
             <Link href="/register" className="font-semibold text-primary-ink hover:underline">
               Create an account
             </Link>

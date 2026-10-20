@@ -4,7 +4,7 @@ const DEV_SECRET = "dev-only-insecure-secret-change-me-0123456789abcdef";
 
 const schema = z.object({
   NODE_ENV: z.enum(["development", "test", "production"]).default("development"),
-  MONGODB_URI: z.string().min(1).default("mongodb://127.0.0.1:27017/lumos"),
+  MONGODB_URI: z.string().min(1).default("mongodb://127.0.0.1:27017/langa"),
   APP_URL: z.url().default("http://localhost:3000"),
   AUTH_SECRET: z.string().min(32).optional(),
   STORAGE_DRIVER: z.enum(["local", "cloudinary"]).default("local"),
@@ -16,7 +16,7 @@ const schema = z.object({
   SMTP_PORT: z.coerce.number().int().positive().default(587),
   SMTP_USER: z.string().optional(),
   SMTP_PASSWORD: z.string().optional(),
-  EMAIL_FROM: z.string().default("Lumos <no-reply@example.com>"),
+  EMAIL_FROM: z.string().default("Langa <no-reply@example.com>"),
 });
 
 export type Env = z.infer<typeof schema> & { AUTH_SECRET: string };

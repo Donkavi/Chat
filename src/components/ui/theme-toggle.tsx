@@ -5,8 +5,8 @@ import { Monitor, Moon, Sun } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 export type ThemePref = "system" | "light" | "dark";
-const KEY = "lumos-theme";
-const EVENT = "lumos-theme-change";
+const KEY = "langa-theme";
+const EVENT = "langa-theme-change";
 
 let memoryPref: ThemePref | null = null;
 

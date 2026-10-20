@@ -4,7 +4,7 @@ import os from "node:os";
 
 export default defineConfig({
   // Keep the cache out of the project so a running `next dev` doesn't watch it.
-  cacheDir: path.join(os.tmpdir(), "lumos-vitest"),
+  cacheDir: path.join(os.tmpdir(), "langa-vitest"),
   resolve: { alias: { "@": path.resolve(import.meta.dirname, "src") } },
   test: {
     environment: "node",

@@ -48,10 +48,10 @@ export function LocationGate({ stale = false }: { stale?: boolean }) {
           </h2>
           <p className="mt-3 text-[0.9375rem] leading-relaxed text-ink-muted text-pretty sm:text-base">
             {denied
-              ? "Lumos needs your approximate location to find people nearby. You can allow it in your browser settings — it takes a few seconds."
+              ? "Langa needs your approximate location to find people nearby. You can allow it in your browser settings — it takes a few seconds."
               : unsupported
                 ? "Try a recent version of Chrome, Safari, Firefox or Edge to discover people nearby. You can still chat with your existing connections."
-                : "Lumos uses your location to find people within your chosen radius. We only use it to calculate approximate distances."}
+                : "Langa uses your location to find people within your chosen radius. We only use it to calculate approximate distances."}
           </p>
 
           {denied ? (

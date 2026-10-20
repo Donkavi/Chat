@@ -76,9 +76,9 @@ export async function requestPasswordReset(email: string): Promise<void> {
   const link = `${env().APP_URL.replace(/\/$/, "")}/reset-password?token=${encodeURIComponent(token)}`;
   await sendMail({
     to: user.email,
-    subject: "Reset your Lumos password",
-    text: `Hi ${user.displayName},\n\nSomeone (hopefully you) asked to reset your Lumos password. This link works for 1 hour:\n\n${link}\n\nIf you didn't ask for this, you can ignore this email.`,
-    html: `<p>Hi ${escapeHtml(user.displayName)},</p><p>Someone (hopefully you) asked to reset your Lumos password. This link works for 1 hour:</p><p><a href="${link}">Reset my password</a></p><p>If you didn't ask for this, you can ignore this email.</p>`,
+    subject: "Reset your Langa password",
+    text: `Hi ${user.displayName},\n\nSomeone (hopefully you) asked to reset your Langa password. This link works for 1 hour:\n\n${link}\n\nIf you didn't ask for this, you can ignore this email.`,
+    html: `<p>Hi ${escapeHtml(user.displayName)},</p><p>Someone (hopefully you) asked to reset your Langa password. This link works for 1 hour:</p><p><a href="${link}">Reset my password</a></p><p>If you didn't ask for this, you can ignore this email.</p>`,
   });
 }
 

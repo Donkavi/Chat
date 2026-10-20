@@ -27,7 +27,7 @@ describe("registration", () => {
     expect(data).not.toHaveProperty("passwordHash");
 
     const cookie = sessionCookieFrom(res);
-    expect(cookie.raw).toMatch(/lumos_session=/);
+    expect(cookie.raw).toMatch(/langa_session=/);
     expect(cookie.raw).toMatch(/HttpOnly/i);
     expect(cookie.raw).toMatch(/SameSite=lax/i);
 

@@ -19,7 +19,7 @@ await Promise.all([
 
 beforeAll(async () => {
   const base = inject("mongoUri");
-  const db = `lumos_test_${Math.random().toString(36).slice(2, 10)}`;
+  const db = `langa_test_${Math.random().toString(36).slice(2, 10)}`;
   await connectDb(`${base.replace(/\/?$/, "/")}${db}`);
   // Build indexes (2dsphere, unique keys) before any test relies on them.
   await Promise.all(Object.values(mongoose.models).map((m) => m.init()));
@@ -27,7 +27,7 @@ beforeAll(async () => {
 
 beforeEach(async () => {
   await Promise.all(Object.values(mongoose.connection.collections).map((c) => c.deleteMany({})));
-  (globalThis as unknown as { __lumosRateLimit?: Map<string, unknown> }).__lumosRateLimit?.clear();
+  (globalThis as unknown as { __langaRateLimit?: Map<string, unknown> }).__langaRateLimit?.clear();
 });
 
 afterAll(async () => {

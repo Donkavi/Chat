@@ -47,7 +47,7 @@ async function main() {
   const docs = PEOPLE.map((p, i) => {
     const [lat, lng] = AREAS[p.area];
     return {
-      email: `${p.username.replace(/\./g, "_")}@seed.lumos.lk`,
+      email: `${p.username.replace(/\./g, "_")}@seed.langa.lk`,
       username: p.username,
       displayName: p.displayName,
       passwordHash,
@@ -116,8 +116,8 @@ async function main() {
   }
   console.log(`Created ${SEED_CONVERSATIONS.length} demo conversations.`);
 
-  console.log("\n  Demo login:  demo@lumos.lk  /  lumos-demo-123");
-  console.log("  Seed users:  <username>  /  lumos-demo-123   (e.g. amaya.f)");
+  console.log("\n  Demo login:  demo@langa.lk  /  langa-demo-123");
+  console.log("  Seed users:  <username>  /  langa-demo-123   (e.g. amaya.f)");
   console.log("\n  Seed users only appear in Nearby while online. Run `npm run simulate`");
   console.log("  (with the app running) to bring them online and have them reply to chats.\n");
 }

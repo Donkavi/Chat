@@ -31,17 +31,17 @@ export const AREAS = {
 } as const satisfies Record<string, readonly [number, number]>;
 
 export const DEMO_ACCOUNT = {
-  email: "demo@lumos.lk",
+  email: "demo@langa.lk",
   username: "demo",
   displayName: "Kavi Perera",
-  password: "lumos-demo-123",
+  password: "langa-demo-123",
   bio: "Product designer by day, street-food explorer by night. Always up for a good chat over iced coffee.",
   interests: ["Design", "Street food", "Photography", "Coffee", "Cricket"],
   age: 27,
   area: "Kollupitiya" as const,
 };
 
-export const SEED_PASSWORD = "lumos-demo-123";
+export const SEED_PASSWORD = "langa-demo-123";
 
 export const PEOPLE: SeedPerson[] = [
   { displayName: "Amaya Fernando", username: "amaya.f", gender: "women", photo: 65, age: 26, area: "Bambalapitiya", bio: "Surfer, sunrise chaser and part-time barista. Ask me about the best waves in Arugam Bay 🌊", interests: ["Surfing", "Coffee", "Beach days", "Yoga"] },

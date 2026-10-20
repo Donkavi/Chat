@@ -23,8 +23,8 @@ import { ProfileCard, ProfileCardSkeleton } from "./profile-card";
 import { RadiusSelector } from "./radius-selector";
 import { Radar } from "./radar";
 
-const RADIUS_KEY = "lumos-radius";
-const RADIUS_EVENT = "lumos-radius-change";
+const RADIUS_KEY = "langa-radius";
+const RADIUS_EVENT = "langa-radius-change";
 const DEFAULT_RADIUS: RadiusKm = 10;
 const AUTO_REFRESH_MS = 45_000;
 

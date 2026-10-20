@@ -39,7 +39,7 @@ function replyTo(bot: Bot, text: string, isFirst: boolean): string {
     return pick([
       `Hey! 👋 I'm ${first}. Nice to meet someone nearby!`,
       `Hi there! How's your day going? 😊`,
-      `Hello! Thanks for saying hi — what brings you to Lumos?`,
+      `Hello! Thanks for saying hi — what brings you to Langa?`,
     ]);
   }
   if (t.includes("?")) {
@@ -64,7 +64,7 @@ function replyTo(bot: Bot, text: string, isFirst: boolean): string {
 async function markRead(bot: Bot, conversationId: string) {
   await fetch(`${appUrl}/api/conversations/${conversationId}/read`, {
     method: "POST",
-    headers: { cookie: `lumos_session=${bot.token}`, "content-type": "application/json" },
+    headers: { cookie: `langa_session=${bot.token}`, "content-type": "application/json" },
     body: "{}",
   }).catch(() => {});
 }
@@ -73,7 +73,7 @@ function connect(bot: Bot) {
   const socket: Socket<ServerToClientEvents, ClientToServerEvents> = io(appUrl, {
     path: "/socket.io",
     transports: ["websocket"],
-    extraHeaders: { cookie: `lumos_session=${bot.token}` },
+    extraHeaders: { cookie: `langa_session=${bot.token}` },
     reconnectionDelayMax: 5000,
   });
   bot.socket = socket;
@@ -122,7 +122,7 @@ async function main() {
 
   const bots: Bot[] = [];
   for (const u of seeds) {
-    const { token } = await createSession(u._id, "lumos-simulator");
+    const { token } = await createSession(u._id, "langa-simulator");
     bots.push({ id: String(u._id), name: u.displayName, interests: u.interests, token, socket: null });
   }
 
@@ -154,7 +154,7 @@ async function main() {
     clearInterval(locTimer);
     clearInterval(churn);
     bots.forEach(disconnect);
-    await Session.deleteMany({ userAgent: "lumos-simulator" });
+    await Session.deleteMany({ userAgent: "langa-simulator" });
     await disconnectDb();
     process.exit(0);
   };

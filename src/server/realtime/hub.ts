@@ -18,14 +18,14 @@ export type IO = Server<ClientToServerEvents, ServerToClientEvents, Record<strin
  * globalThis to push events. Outside the custom server (e.g. `next build`,
  * unit tests) it's null and emits are no-ops.
  */
-const g = globalThis as unknown as { __lumosIO?: IO | null };
+const g = globalThis as unknown as { __langaIO?: IO | null };
 
 export function setIO(io: IO | null) {
-  g.__lumosIO = io;
+  g.__langaIO = io;
 }
 
 export function getIO(): IO | null {
-  return g.__lumosIO ?? null;
+  return g.__langaIO ?? null;
 }
 
 export const userRoom = (userId: string) => `user:${userId}`;

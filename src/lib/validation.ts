@@ -36,7 +36,7 @@ export const registerSchema = z.object({
   username: usernameSchema,
   email: emailSchema,
   password: passwordSchema,
-  confirmAdult: z.literal(true, { error: "You must be 18 or older to use Lumos." }),
+  confirmAdult: z.literal(true, { error: "You must be 18 or older to use Langa." }),
 });
 
 export const loginSchema = z.object({

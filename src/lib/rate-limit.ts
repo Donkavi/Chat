@@ -9,8 +9,8 @@ import { AppError } from "./errors";
  */
 type Bucket = { count: number; resetAt: number };
 
-const g = globalThis as unknown as { __lumosRateLimit?: Map<string, Bucket> };
-const buckets: Map<string, Bucket> = (g.__lumosRateLimit ??= new Map());
+const g = globalThis as unknown as { __langaRateLimit?: Map<string, Bucket> };
+const buckets: Map<string, Bucket> = (g.__langaRateLimit ??= new Map());
 
 let lastSweep = Date.now();
 function sweep(now: number) {

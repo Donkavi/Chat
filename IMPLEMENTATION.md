@@ -1,4 +1,4 @@
-# Lumos: implementation notes
+# Langa: implementation notes
 
 A handover for picking this project up on another machine: how to move it, how to get it running, how it's built, and the non-obvious decisions to keep. For product-level docs (features, API list, deployment) see [README.md](README.md).
 
@@ -28,11 +28,11 @@ The folder is already a git repository with nothing committed yet, and `.gitigno
 
 ```bash
 git add -A
-git commit -m "Initial Lumos implementation"
+git commit -m "Initial Langa implementation"
 git remote add origin <your-repo-url>
 git push -u origin main
 # on the new machine
-git clone <your-repo-url> lumos && cd lumos
+git clone <your-repo-url> langa && cd langa
 ```
 
 ### Option B: zip
@@ -62,7 +62,7 @@ npm run dev           # terminal 2: http://localhost:3000
 npm run simulate      # terminal 3, optional: seed users come online and reply
 ```
 
-Sign in as `demo@lumos.lk` / `lumos-demo-123`.
+Sign in as `demo@langa.lk` / `langa-demo-123`.
 
 To use a real MongoDB instead (Atlas or a local install), set `MONGODB_URI` in `.env.local` and skip `db:local`. The seed script refuses any non-local URI unless `ALLOW_SEED=true` is set.
 
@@ -170,7 +170,7 @@ The result goes through a whitelist `$project`, then `toPublicUser`, then `appro
 1. **TypeScript 6.x, not 7.** TS 7 is the native Go port, while Next.js and typescript-eslint use the JS compiler API. **ESLint 9**, not 10, for plugin compatibility.
 2. **`destroyUpgrade: false`** on Socket.IO. Without it, Socket.IO kills Next's HMR WebSocket upgrades on the shared server.
 3. **Models are registered as `mongoose.models.X ?? mongoose.model(...)`.** The same files load through both tsx (the server) and Next's bundler (routes). Mongoose is listed in `serverExternalPackages`, so both share one instance.
-4. **Cross-bundle singletons live on `globalThis`**: `__lumosIO` (the socket server, used by routes to emit) and `__lumosRateLimit`. `db.ts` tracks connection state on the mongoose instance itself rather than in a module variable.
+4. **Cross-bundle singletons live on `globalThis`**: `__langaIO` (the socket server, used by routes to emit) and `__langaRateLimit`. `db.ts` tracks connection state on the mongoose instance itself rather than in a module variable.
 5. **The ESLint rule `react-hooks/set-state-in-effect` is enforced.**
    - Browser-stored values (theme, radius) use `useSyncExternalStore`.
    - Fetch helpers called from effects use `.then()` chains, not `async` with try/catch (the rule misreads those).

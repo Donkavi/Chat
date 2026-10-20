@@ -71,7 +71,7 @@ export async function storeAvatar(webp: Buffer): Promise<StoredFile> {
   const id = randomUUID();
   if (env().STORAGE_DRIVER === "cloudinary") {
     const { cloud, apiKey } = cloudinaryConfig();
-    const params = { folder: "lumos/avatars", public_id: id, timestamp: String(Math.floor(Date.now() / 1000)) };
+    const params = { folder: "langa/avatars", public_id: id, timestamp: String(Math.floor(Date.now() / 1000)) };
     const form = new FormData();
     form.set("file", new Blob([new Uint8Array(webp)], { type: "image/webp" }), `${id}.webp`);
     for (const [k, v] of Object.entries(params)) form.set(k, v);
