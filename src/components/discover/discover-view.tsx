@@ -5,7 +5,7 @@ import { useCallback, useEffect, useRef, useState, useSyncExternalStore } from "
 import { AnimatePresence } from "motion/react";
 import { EyeOff, MapPin, MoreHorizontal, PauseCircle, RefreshCw, Users, ArrowRight } from "lucide-react";
 import { api, ApiError } from "@/lib/client/api";
-import { RADIUS_OPTIONS_KM, type RadiusKm } from "@/lib/geo";
+import { RADIUS_OPTIONS_KM, radiusLabel, withinRadius, type RadiusKm } from "@/lib/geo";
 import { greeting } from "@/lib/format";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
@@ -253,8 +253,8 @@ export function DiscoverView() {
                 <p className="text-sm text-ink-muted" aria-live="polite">
                   {state === "ready" &&
                     (people.length === 0
-                      ? `No one within ${radius} km`
-                      : `${people.length}${cursor ? "+" : ""} ${people.length === 1 ? "person" : "people"} within ${radius} km`)}
+                      ? `No one ${withinRadius(radius)}`
+                      : `${people.length}${cursor ? "+" : ""} ${people.length === 1 ? "person" : "people"} ${withinRadius(radius)}`)}
                 </p>
                 <Button variant="ghost" size="icon-sm" onClick={refresh} aria-label="Refresh" disabled={refreshing || state === "loading"}>
                   <RefreshCw className={cn("size-4.5", refreshing && "animate-spin")} />
@@ -294,12 +294,12 @@ export function DiscoverView() {
                 </Radar>
                 <h2 className="mt-8 font-display text-2xl font-semibold tracking-tight text-ink">It&apos;s quiet around here</h2>
                 <p className="mt-2 max-w-sm text-[0.9375rem] leading-relaxed text-ink-muted">
-                  Nobody&apos;s online within {radius} km right now. Try a wider radius, or check back soon — people pop online all the time.
+                  Nobody&apos;s online {withinRadius(radius)} right now. {nextRadius ? "Try a wider radius, or check" : "Check"} back soon — people pop online all the time.
                 </p>
                 <div className="mt-7 flex flex-wrap justify-center gap-3">
                   {nextRadius && (
                     <Button onClick={() => changeRadius(nextRadius)}>
-                      Search {nextRadius} km <ArrowRight className="size-4" aria-hidden />
+                      Search {radiusLabel(nextRadius).toLowerCase()} <ArrowRight className="size-4" aria-hidden />
                     </Button>
                   )}
                   <Button variant="secondary" onClick={refresh} loading={refreshing}>
@@ -334,7 +334,7 @@ export function DiscoverView() {
                   <p className="mt-10 text-center text-sm text-ink-muted">
                     Want more?{" "}
                     <button type="button" onClick={() => changeRadius(nextRadius)} className="font-semibold text-primary-ink hover:underline">
-                      Widen to {nextRadius} km
+                      Widen to {radiusLabel(nextRadius).toLowerCase()}
                     </button>
                   </p>
                 )}

@@ -1,7 +1,7 @@
 import { z } from "zod";
 import { REPORT_REASONS } from "@/shared/report-reasons";
 import { BIO_MAX_LENGTH, MAX_INTERESTS, MESSAGE_MAX_LENGTH } from "@/shared/constants";
-import { RADIUS_OPTIONS_KM } from "./geo";
+import { ANY_RADIUS_KM, RADIUS_OPTIONS_KM } from "./geo";
 
 /** Schemas shared by forms (client) and route handlers (server). The server is always authoritative. */
 
@@ -96,7 +96,7 @@ export const locationUpdateSchema = z.object({
 export const radiusSchema = z.coerce
   .number()
   .refine((n): n is (typeof RADIUS_OPTIONS_KM)[number] => (RADIUS_OPTIONS_KM as readonly number[]).includes(n), {
-    error: `Radius must be one of ${RADIUS_OPTIONS_KM.join(", ")} km.`,
+    error: `Radius must be one of ${RADIUS_OPTIONS_KM.join(", ")} km (${ANY_RADIUS_KM} means any distance).`,
   });
 
 export const nearbyQuerySchema = z.object({

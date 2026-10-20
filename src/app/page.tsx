@@ -12,7 +12,7 @@ const STEPS = [
     icon: MapPinned,
     kicker: "Discover",
     title: "See who's around you",
-    text: "Turn on location, pick a radius from 1 to 100 km, and browse people who are online right now.",
+    text: "Turn on location, pick a radius from 1 km to any distance, and browse people who are online right now.",
   },
   {
     icon: Sparkles,

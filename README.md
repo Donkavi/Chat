@@ -71,7 +71,7 @@ All responses are either `{ data }` or `{ error: { code, message, fields? } }`.
 | --- | --- |
 | Auth | `POST /api/auth/register`, `POST /api/auth/login`, `POST /api/auth/logout`, `POST /api/auth/forgot-password`, `POST /api/auth/reset-password`, `GET /api/auth/username?u=` |
 | Profile | `GET/PATCH/DELETE /api/users/me`, `PATCH /api/users/me/privacy`, `POST/DELETE /api/users/me/avatar`, `GET /api/users/me/blocks`, `GET /api/users/:id` |
-| Location & discovery | `PATCH /api/location` (share/refresh), `DELETE /api/location` (stop + erase), `GET /api/nearby?radiusKm=1\|5\|10\|25\|50\|100&cursor=` |
+| Location & discovery | `PATCH /api/location` (share/refresh), `DELETE /api/location` (stop + erase), `GET /api/nearby?radiusKm=1\|5\|10\|25\|50\|100\|20000&cursor=` (20000 = any distance) |
 | Chat | `GET/POST /api/conversations`, `GET /api/conversations/:id`, `GET/POST /api/conversations/:id/messages?before=&after=`, `POST /api/conversations/:id/read` |
 | Safety | `POST/DELETE /api/users/:id/block`, `POST /api/reports` |
 | Ops | `GET /api/health`, `GET /api/uploads/*` (local avatar storage) |

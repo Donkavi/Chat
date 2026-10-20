@@ -1,7 +1,7 @@
 import type { PipelineStage } from "mongoose";
 import { User, type UserDoc } from "../models/User";
 import { AppError } from "@/lib/errors";
-import { LOCATION_FRESH_MS, approximateDistanceKm, haversineMeters, fromGeoPoint, toGeoPoint, type LatLng } from "@/lib/geo";
+import { ANY_RADIUS_KM, LOCATION_FRESH_MS, approximateDistanceKm, haversineMeters, fromGeoPoint, toGeoPoint, type LatLng } from "@/lib/geo";
 import { NEARBY_PAGE_SIZE, PRESENCE_STALE_MS } from "@/shared/constants";
 import type { NearbyResponse, NearbyUser } from "@/shared/types";
 import { getBlockedIdsEitherWay } from "./blocks";
@@ -57,7 +57,8 @@ export async function findNearby(viewer: UserDoc, radiusKm: number, cursor?: str
         near: viewer.location,
         key: "location",
         distanceField: "distanceMeters",
-        maxDistance: radiusKm * 1000,
+        // "Any distance" drops the cap; results are still nearest first.
+        ...(radiusKm < ANY_RADIUS_KM && { maxDistance: radiusKm * 1000 }),
         spherical: true,
         query: {
           _id: { $nin: excluded },

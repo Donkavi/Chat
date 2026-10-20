@@ -5,7 +5,7 @@ import { GET as profileRoute } from "@/app/api/users/[id]/route";
 import { findNearby } from "@/server/services/discovery";
 import { blockUser } from "@/server/services/blocks";
 import { User, type UserDoc } from "@/server/models/User";
-import { LOCATION_FRESH_MS } from "@/lib/geo";
+import { ANY_RADIUS_KM, LOCATION_FRESH_MS } from "@/lib/geo";
 import { PRESENCE_STALE_MS } from "@/shared/constants";
 import { AppError } from "@/lib/errors";
 import { KOLLUPITIYA, COLOMBO_FORT, GALLE, KANDY, NUGEGODA, body, cookieFor, makeUser, noParams, params, req } from "./helpers";
@@ -32,6 +32,10 @@ describe("nearby discovery", () => {
     const r100 = await findNearby(me, 100);
     expect(r100.users.map((u) => u.displayName)).toEqual(["Near", "Mid", "Kandy"]);
     expect(r100.users[0].distanceKm).toBeLessThan(r100.users[1].distanceKm);
+
+    // "Any distance" has no cap, still nearest first.
+    const rAny = await findNearby(me, ANY_RADIUS_KM);
+    expect(rAny.users.map((u) => u.displayName)).toEqual(["Near", "Mid", "Kandy", "Galle"]);
   });
 
   it("never exposes coordinates or private fields", async () => {

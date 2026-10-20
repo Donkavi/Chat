@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "motion/react";
-import { RADIUS_OPTIONS_KM, type RadiusKm } from "@/lib/geo";
+import { ANY_RADIUS_KM, RADIUS_OPTIONS_KM, type RadiusKm } from "@/lib/geo";
 import { cn } from "@/lib/utils";
 
 /** Segmented radius picker with a sliding highlight. Arrow keys move between options. */
@@ -43,10 +43,14 @@ export function RadiusSelector({ value, onChange }: { value: RadiusKm; onChange:
                   transition={{ type: "spring", stiffness: 520, damping: 38 }}
                 />
               )}
-              <span className="relative">
-                {r}
-                <span className={cn("ml-0.5 text-[0.6875rem] font-medium sm:text-xs", active ? "text-white/80" : "text-ink-subtle")}>km</span>
-              </span>
+              {r === ANY_RADIUS_KM ? (
+                <span className="relative">Any</span>
+              ) : (
+                <span className="relative">
+                  {r}
+                  <span className={cn("ml-0.5 text-[0.6875rem] font-medium sm:text-xs", active ? "text-white/80" : "text-ink-subtle")}>km</span>
+                </span>
+              )}
             </button>
           );
         })}

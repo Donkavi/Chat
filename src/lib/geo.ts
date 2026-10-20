@@ -33,8 +33,24 @@ export function fromGeoPoint(p: GeoPoint): LatLng {
   return { lng: p.coordinates[0], lat: p.coordinates[1] };
 }
 
-export const RADIUS_OPTIONS_KM = [1, 5, 10, 25, 50, 100] as const;
+/**
+ * "Any distance". Half the Earth's circumference, so it covers the whole globe
+ * while still sorting after every finite option (keeps "widen" logic simple).
+ */
+export const ANY_RADIUS_KM = 20_000;
+
+export const RADIUS_OPTIONS_KM = [1, 5, 10, 25, 50, 100, ANY_RADIUS_KM] as const;
 export type RadiusKm = (typeof RADIUS_OPTIONS_KM)[number];
+
+/** Short label for the radius picker: "10 km" or "Any". */
+export function radiusLabel(r: number): string {
+  return r >= ANY_RADIUS_KM ? "Any distance" : `${r} km`;
+}
+
+/** Phrase for sentences: "within 10 km" or "anywhere". */
+export function withinRadius(r: number): string {
+  return r >= ANY_RADIUS_KM ? "anywhere" : `within ${r} km`;
+}
 
 /** A location older than this is not used to present someone as "nearby". */
 export const LOCATION_FRESH_MS = 30 * 60_000;
